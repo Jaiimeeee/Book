@@ -1,0 +1,55 @@
+/* styles.css */
+body {
+    background-color: rgb(28, 28, 28);
+    color: rgb(169, 190, 190);
+    font: -apple-system-body;
+    
+}
+header {
+    border: none;
+    background-color: rgb(180, 193, 188);
+    color: rgb(15, 14, 12);
+    height: max-content;
+    line-height: 3;
+    border-radius: 15px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar el ratón */
+    transition: background-color 0.3s;
+    grid-row-gap: 16px;
+}
+a {
+  color: rgb(15, 14, 12);
+    
+}
+table {
+    border: 1px solid;
+      
+  }
+th{
+    padding: 40px;
+    text-align: center;
+    width: 140px;
+  }
+td{
+  padding: 40px;
+  text-align: center;
+  background-color: green;
+  width: 140px;
+ 
+}
+button {
+  border: none;
+  background-color: rgb(180, 193, 188);
+  color: rgb(15, 14, 12);
+  border-style: outset;
+  border-color:rgb(180, 193, 188);
+  height: 50px;
+  width: 100px;
+  font: bold15px arial,sans-serif;
+  text-shadow: none;
+  border-radius: 15px; /* Bordes redondeados */
+  cursor: pointer; /* Cambia el cursor al pasar el ratón */
+  transition: background-color 0.3s;
+  }
+hour {
+  background-color: rgb(180, 193, 188);;
+}

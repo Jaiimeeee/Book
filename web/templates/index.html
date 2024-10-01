@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/main.css" />
+    <title>Sport Center</title>
+    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+</head>
+<body>
+
+    <h3>Court 1</h3>
+    <table>
+        <tr>
+            <th>13:00-14:00</th>
+            <th>14:00-15:00</th>
+            <th>15:00-16:00</th>
+            <th>16:00-17:00</th>
+            <th>17:00-18:00</th>
+            <th>18:00-19:00</th>
+            <th>19:00-20:00</th>
+        </tr>
+        <tr>
+            <td data-court="court1" data-time="13:00-14:00"><a href="#" onclick="bookCourt('court1', '13:00-14:00')">Book now</a></td>
+            <td data-court="court1" data-time="14:00-15:00"><a href="#" onclick="bookCourt('court1', '14:00-15:00')">Book now</a></td>
+            <td data-court="court1" data-time="15:00-16:00"><a href="#" onclick="bookCourt('court1', '15:00-16:00')">Book now</a></td>
+            <td data-court="court1" data-time="16:00-17:00"><a href="#" onclick="bookCourt('court1', '16:00-17:00')">Book now</a></td>
+            <td data-court="court1" data-time="17:00-18:00"><a href="#" onclick="bookCourt('court1', '17:00-18:00')">Book now</a></td>
+            <td data-court="court1" data-time="18:00-19:00"><a href="#" onclick="bookCourt('court1', '18:00-19:00')">Book now</a></td>
+            <td data-court="court1" data-time="19:00-20:00"><a href="#" onclick="bookCourt('court1', '19:00-20:00')">Book now</a></td>
+        </tr>
+    </table>
+
+    <h3>Court 2</h3>
+    <table>
+        <tr>
+            <th>13:00-14:00</th>
+            <th>14:00-15:00</th>
+            <th>15:00-16:00</th>
+            <th>16:00-17:00</th>
+            <th>17:00-18:00</th>
+            <th>18:00-19:00</th>
+            <th>19:00-20:00</th>
+        </tr>
+        <tr>
+            <td data-court="court2" data-time="13:00-14:00"><a href="#" onclick="bookCourt('court2', '13:00-14:00')">Book now</a></td>
+            <td data-court="court2" data-time="14:00-15:00"><a href="#" onclick="bookCourt('court2', '14:00-15:00')">Book now</a></td>
+            <td data-court="court2" data-time="15:00-16:00"><a href="#" onclick="bookCourt('court2', '15:00-16:00')">Book now</a></td>
+            <td data-court="court2" data-time="16:00-17:00"><a href="#" onclick="bookCourt('court2', '16:00-17:00')">Book now</a></td>
+            <td data-court="court2" data-time="17:00-18:00"><a href="#" onclick="bookCourt('court2', '17:00-18:00')">Book now</a></td>
+            <td data-court="court2" data-time="18:00-19:00"><a href="#" onclick="bookCourt('court2', '18:00-19:00')">Book now</a></td>
+            <td data-court="court2" data-time="19:00-20:00"><a href="#" onclick="bookCourt('court2', '19:00-20:00')">Book now</a></td>
+        </tr>
+    </table>
+    <script>function bookCourt(court, time) {
+        // Redirect to insert.html with the court and time as query parameters
+        window.location.href = `/insert?court=${encodeURIComponent(court)}&time=${encodeURIComponent(time)}`;
+    }
+</script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.0/socket.io.min.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
+
+       
+</body>
+</html>

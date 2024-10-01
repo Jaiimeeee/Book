@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking</title>
+</head>
+<body>
+
+    <h1>Booking Details</h1>
+    <form action="/insert_paddle" method="post">
+      <label for="id_number">ID:</label>
+      <input type="id_number" id="id_number" name="id_number"><br><br>
+        
+      <label for="court">Court:</label>
+      <input type="text" id="court" name="court" readonly><br><br>
+
+        <label for="time">Time:</label>
+        <input type="text" id="time" name="time" readonly><br><br>
+
+        <button type="submit">Confirm Booking</button>
+    </form>
+
+    <script>
+      // Function to get query parameters from URL
+      function getQueryParam(param) {
+          var urlParams = new URLSearchParams(window.location.search);
+          return urlParams.get(param);
+      }
+
+      // Set the court and time fields with values from the URL
+      document.getElementById('court').value = getQueryParam('court');
+      document.getElementById('time').value = getQueryParam('time');
+  </script>
+
+</body>
+</html>
