@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    var socket = io.connect('http://' + document.domain + ':' + location.port);
+    var socket = io.connect(window.location.protocol + '//' + document.domain + ':' + location.port);
 
     // Actualizar el estado de las reservas cuando llega un evento 'booking_update'
     socket.on('booking_update', (data) => {
@@ -17,18 +17,25 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Enviar una reserva al hacer clic en una celda de la tabla
-    document.querySelectorAll('td').forEach((cell) => {
-        cell.addEventListener('click', (event) => {
-            const court = cell.getAttribute('data-court');
-            const time = cell.getAttribute('data-time');
-            if (court && time && cell.innerText === 'Book now') {
-                socket.emit('book', { facility: court, hour: time });
-            }
-        });
+    // Function to get query parameters from URL
+    function getQueryParam(param) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param);
+    }
+
+    // Add event listener to the confirm button
+    document.querySelector("#confirm").addEventListener('click', function() {
+        const court = getQueryParam('court');
+        const time = getQueryParam('time');
+        const id_number = document.getElementById('id_number').value; // Get the value from the input field
+        console.log('Court:', court, 'Time:', time, 'ID Number:', id_number); // Debugging
+
+        if (court && time && id_number) {
+            // Emit booking event
+            socket.emit('book', { facility: court, hour: time, id_number: id_number });
+        } else {
+            alert('Please fill out all fields before confirming the booking.');
+        }
     });
 });
-function bookCourt(court, time) {
-    // Redirect to insert.html with the court and time as query parameters
-    window.location.href = `/insert?court=${encodeURIComponent(court)}&time=${encodeURIComponent(time)}`;
-}
+

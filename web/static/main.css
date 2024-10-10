@@ -1,14 +1,15 @@
 /* styles.css */
 body {
-    background-color: rgb(28, 28, 28);
-    color: rgb(169, 190, 190);
+    background-color: rgb(242, 240, 240);
+    color: rgb(0, 0, 0);
     font: -apple-system-body;
     
 }
 header {
     border: none;
-    background-color: rgb(180, 193, 188);
-    color: rgb(15, 14, 12);
+    text-align: center;
+    background-color: rgb(67, 84, 64) ;
+    color: white;
     height: max-content;
     line-height: 3;
     border-radius: 15px; /* Bordes redondeados */
@@ -25,6 +26,8 @@ table {
       
   }
 th{
+    background-color: rgb(67, 84, 64)  ;
+    color: white;
     padding: 40px;
     text-align: center;
     width: 140px;
@@ -52,4 +55,8 @@ button {
   }
 hour {
   background-color: rgb(180, 193, 188);;
+}
+
+h3 {
+  font-family: "Lucida Handwriting", cursive;
 }

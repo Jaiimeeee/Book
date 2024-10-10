@@ -13,6 +13,7 @@ bookings = {
     'court1': {},
     'court2': {}
 }
+dates = {}
 
 def get_db_connection():
     conn = sqlite3.connect('sportcenter.db')
@@ -50,36 +51,13 @@ def insert_paddle():
     else:
         message = 'Your booking is done!'
         db.insert_db(id_number, facility, hour)
-        
         # Update bookings dictionary and notify clients
         bookings[facility][hour] = 'booked'
         emit('booking_update', bookings, broadcast=True)
         
         return render_template('t.html', message=message)
 
-@app.route('/court1_get_bookings_paddle', methods=['GET'])
-def court1_get_bookings_paddle():
-    conn = get_db_connection()
-    cursor = conn.cursor()
-    
-    cursor.execute("SELECT hour FROM sportcenter WHERE facility = 'court1'")
-    vector = [fila[0] for fila in cursor.fetchall()]
-    
-    conn.close()
-    return render_template('index.html', vector=vector)
 
-@app.route('/court2_get_bookings_paddle', methods=['GET'])
-def court2_get_bookings_paddle():
-    conn = get_db_connection()
-    cursor = conn.cursor()
-    
-    cursor.execute("SELECT hour FROM sportcenter WHERE facility = 'court2'")
-    vector = [fila[0] for fila in cursor.fetchall()]
-    
-    conn.close()
-    return render_template('index.html', vector=vector)
-
-# Load bookings from the database into the bookings dictionary
 def load_bookings_from_db():
     conn = get_db_connection()
     cursor = conn.cursor()
@@ -90,6 +68,7 @@ def load_bookings_from_db():
         if facility not in bookings:
             bookings[facility] = {}
         bookings[facility][hour] = 'booked'
+    
     conn.close()
 
 @socketio.on('connect')
@@ -100,11 +79,12 @@ def handle_connect():
 
 @socketio.on('book')
 def handle_booking(data):
+    id_number = data['id_number']
     court = data['facility']
     time_slot = data['hour']
     
     # Insert booking into the database
-    db.insert_db(None, court, time_slot)
+    db.insert_db(id_number, court, time_slot)
     
     # Update bookings dictionary
     bookings[court][time_slot] = 'booked'
