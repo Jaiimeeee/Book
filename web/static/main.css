@@ -8,7 +8,7 @@ body {
 header {
     border: none;
     text-align: center;
-    background-color: rgb(67, 84, 64) ;
+    background-color: rgb(85, 119, 102) ;
     color: white;
     height: max-content;
     line-height: 3;
@@ -26,11 +26,12 @@ table {
       
   }
 th{
-    background-color: rgb(67, 84, 64)  ;
+    background-color: rgb(85, 119, 102) ;
     color: white;
     padding: 40px;
     text-align: center;
     width: 140px;
+    font-family: "Lucida Handwriting", cursive;
   }
 td{
   padding: 40px;
